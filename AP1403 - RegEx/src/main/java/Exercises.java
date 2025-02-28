@@ -64,6 +64,16 @@ public class Exercises {
     public List<String> findPalindromes(String string) {
         List<String> list = new ArrayList<>();
         // todo
+        String regex = "[a-zA-Z]{3,}";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(string);
+        while (matcher.find()) {
+            String temp = matcher.group().toLowerCase();
+            String reversed = new StringBuilder(temp).reverse().toString();
+            if (temp.equals(reversed)) {
+                list.add(temp);
+            }
+        }
         return list;
     }
 
