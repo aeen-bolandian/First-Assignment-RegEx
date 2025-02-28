@@ -24,7 +24,20 @@ public class Exercises {
      */
     public String findDate(String string) {
         // todo
-        return null;
+        String regex1 = "\\b(0?[1-9]|[12][0-9]|3[01])[-/](0?[1-9]|1[012])[-/](\\d{4})\\b";
+        String regex2 = "\\b(\\d{4})[-/](0?[1-9]|1[012])[-/](0?[1-9]|[12][0-9]|3[01])\\b";
+        Pattern pattern1 = Pattern.compile(regex1);
+        Matcher matcher1 = pattern1.matcher(string);
+        Pattern pattern2 = Pattern.compile(regex2);
+        Matcher matcher2 = pattern2.matcher(string);
+        if (matcher1.find()) {
+            return matcher1.group();
+        }
+        else if (matcher2.find()) {
+            return matcher2.group();
+        }
+        else
+            return null;
     }
 
     /*
