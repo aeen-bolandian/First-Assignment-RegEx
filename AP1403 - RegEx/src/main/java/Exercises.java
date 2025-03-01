@@ -52,7 +52,18 @@ public class Exercises {
      */
     public int findValidPasswords(String string) {
         // todo
-        return -1;
+        String regex = "\\b(?=\\S*[A-Z])(?=\\S*[a-z])(?=\\S*\\d)(?=\\S*[!@#$%^&*])\\S{8,}\\b";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(string);
+        int counter = 0;
+//        while(matcher.find())
+//        {
+//            System.out.println(matcher.group());
+//        }
+        while (matcher.find()) {
+            counter++;
+        }
+        return counter;
     }
 
     /*
@@ -79,5 +90,15 @@ public class Exercises {
 
     public static void main(String[] args) {
         // you can test your code here
+//        Exercises ex = new Exercises();
+//        String test = """
+//                [09:15] Dev1: Just changed my password to CodeMaster@2025. \s
+//                [09:17] Dev2: Haha, mine's still qwerty123, no special chars. \s
+//                [09:19] Dev3: I use GitHubSuper#1 but need a better one. \s
+//                [09:21] Dev4: AdminPass42! is good, right? \s
+//                [09:23] Dev5: No, too simple. I switched to UltraSecure$99 last week. \s
+//                [09:25] Dev6: Wait, are we sharing passwords here? \uD83D\uDE02 \s
+//                """;
+//        ex.findValidPasswords(test);
     }
 }
